@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_universal"
+    android:orientation="horizontal"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="HOSPITAL MANAGEMENT GAME"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/bar"
+        android:layout_alignRight="@+id/bar"
+        android:layout_below="@+id/bar"
+        android:layout_marginTop="15dp" >
+
+        <RelativeLayout
+            android:id="@+id/info_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/background_with_border"
+            android:padding="10dp" >
+
+            <RelativeLayout
+                android:id="@+id/container_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" >
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/waiting_room_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/relativeLayout1"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Your Waiting Room"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/typeAText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/waiting_room_text"
+                    android:layout_below="@+id/waiting_room_text"
+                    android:layout_marginTop="7dp"
+                    android:text="A: "
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/a_circles"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/waiting_room_text"
+                    android:layout_toRightOf="@+id/typeAText"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/patientACircle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientACircle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientACircle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientACircle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientACircle5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientACircle6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/typeBText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/waiting_room_text"
+                    android:layout_below="@+id/a_circles"
+                    android:layout_marginTop="5dp"
+                    android:text="B: "
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/b_circles"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/a_circles"
+                    android:layout_toRightOf="@+id/typeBText"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/patientBCircle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientBCircle2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientBCircle3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientBCircle4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientBCircle5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+
+                    <ImageView
+                        android:id="@+id/patientBCircle6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:padding="4dp"
+                        android:src="@drawable/green_circle" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/resources_available_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/b_circles"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Your Resources Available"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/doctorsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/resources_available_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+                    android:text="4"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/doctorsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/resources_available_text"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Doctors"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/nursesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/doctorsValue"
+                    android:layout_marginLeft="10dp"
+                    android:text="6"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nursesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/doctorsValue"
+                    android:layout_marginLeft="40dp"
+                    android:text="Nurses"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/surgeonValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/nursesValue"
+                    android:layout_marginLeft="10dp"
+                    android:text="4"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/surgeonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/resources_available_text"
+                    android:layout_below="@+id/nursesValue"
+                    android:layout_marginLeft="40dp"
+                    android:text="Surgeons"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/surgeonText"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/black" />
+
+                <TextView
+                    android:id="@+id/other_waiting_room_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/line2"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Neighboring Hospital&apos;s Waiting Room"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/typeANHText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_waiting_room_text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="A: "
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/NHACircle"
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_waiting_room_text"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/typeANHText"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/green_square" />
+
+                <TextView
+                    android:id="@+id/typeBNHText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_waiting_room_text"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/NHACircle"
+                    android:text="B: "
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/NHBCircle"
+                    android:layout_width="22dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_waiting_room_text"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/typeBNHText"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/green_square" />
+
+                <TextView
+                    android:id="@+id/other_resources_available_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/typeANHText"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Neighboring Hospital&apos;s Resources"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otherDoctorsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/other_resources_available_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+                    android:text="4"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otherDoctorsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/other_resources_available_text"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Doctors"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/otherNursesValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/otherDoctorsValue"
+                    android:layout_marginLeft="10dp"
+                    android:text="6"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otherNursesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/otherDoctorsValue"
+                    android:layout_marginLeft="40dp"
+                    android:text="Nurses"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/otherSurgeonValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/otherNursesValue"
+                    android:layout_marginLeft="10dp"
+                    android:text="4"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/otherSurgeonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/other_resources_available_text"
+                    android:layout_below="@+id/otherNursesValue"
+                    android:layout_marginLeft="40dp"
+                    android:text="Surgeons"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/score_value"
+                    android:layout_alignTop="@+id/doctorsText"
+                    android:text="Score" />
+
+                <TextView
+                    android:id="@+id/score_value"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/textView1"
+                    android:background="@drawable/background_with_border"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/nh_score_value"
+                    android:layout_alignTop="@+id/otherDoctorsText"
+                    android:text="Score" />
+
+                <TextView
+                    android:id="@+id/nh_score_value"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/textView2"
+                    android:background="@drawable/background_with_border"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/room_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:paddingLeft="15dp" >
+
+            <LinearLayout
+                android:id="@+id/rooms"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/row_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp" >
+
+                    <RelativeLayout
+                        android:id="@+id/room_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_1_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 1"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_1_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_1"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_1_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_1"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText1"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/room_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_2_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 2"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_2_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_2"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_2_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText2"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/room_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_3_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 3"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_3_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_3"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_3_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText3"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/row_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp" >
+
+                    <RelativeLayout
+                        android:id="@+id/room_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_4_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 4"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_4_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_4"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_4"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_4_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_4"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_4"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_4"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText4"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/room_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_5_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 5"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_5_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_5"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_5"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_5_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_5"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_5"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_5"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText5"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/room_6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_with_border" >
+
+                        <TextView
+                            android:id="@+id/room_6_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Room 6"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/vacant_6_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="VACANT"
+                            android:textSize="30sp" />
+
+                        <Button
+                            android:id="@+id/collect_button_6"
+                            style="@style/ButtonBlackText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/selector_button"
+                            android:text="Collect Resources"
+                            android:visibility="gone" />
+
+                        <RelativeLayout
+                            android:id="@+id/room_info_6"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/room_6_title"
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" >
+
+                            <TextView
+                                android:id="@+id/patient_text_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Type A Patient"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/doctor_surgeon_text_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/patient_text_6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Doctor"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/nurse_text_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/doctor_surgeon_text_6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:text="1 Nurse"
+                                android:textSize="18sp" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nurse_text_6"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp" >
+
+                                <TextView
+                                    android:id="@+id/timeLeftText6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:text="Time Left "
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/timeLeftValue6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/timeLeftText6"
+                                    android:text="-:--"
+                                    android:textColor="@color/green"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottom_buttons"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_with_border" >
+
+                <Button
+                    android:id="@+id/assign_resource_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="210dp"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@+id/assign_patient_button"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/selector_button"
+                    android:text="Assign Resource to Room" />
+
+                <Button
+                    android:id="@+id/request_resource_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/assign_resource_button"
+                    android:layout_alignBottom="@+id/assign_resource_button"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/assign_resource_button"
+                    android:background="@drawable/selector_button"
+                    android:text="Request Resources" />
+
+                <Button
+                    android:id="@+id/assign_patient_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/assign_resource_button"
+                    android:background="@drawable/selector_button"
+                    android:text="Assign Patient to Room" />
+
+                <Button
+                    android:id="@+id/patient_a_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/center_button_line"
+                    android:background="@drawable/selector_button"
+                    android:text="Patient A"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/blue_x_clicked"
+                    android:visibility="gone" />
+
+                <View
+                    android:id="@+id/center_button_line"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:id="@+id/patient_b_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/center_button_line"
+                    android:background="@drawable/selector_button"
+                    android:text="Patient B"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/doctor_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/nurses_button"
+                    android:layout_alignBottom="@+id/nurses_button"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/nurses_button"
+                    android:background="@drawable/selector_button"
+                    android:text="Doctor"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/surgeon_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/nurses_button"
+                    android:layout_alignBottom="@+id/nurses_button"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/nurses_button"
+                    android:background="@drawable/selector_button"
+                    android:text="Surgeon"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/nurses_button"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/selector_button"
+                    android:text="Nurse"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/doctor_button2"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/nurses_button2"
+                    android:layout_alignBottom="@+id/nurses_button2"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@+id/nurses_button2"
+                    android:background="@drawable/selector_button"
+                    android:text="Doctor"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/surgeon_button2"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBaseline="@+id/nurses_button2"
+                    android:layout_alignBottom="@+id/nurses_button2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/nurses_button2"
+                    android:background="@drawable/selector_button"
+                    android:text="Surgeon"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/nurses_button2"
+                    style="@style/ButtonBlackText"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/selector_button"
+                    android:text="Nurse"
+                    android:visibility="gone" />
+                
+                <RelativeLayout
+                    android:id="@+id/interruption_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/background_with_border_red"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/interruption_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/accept_request"
+                        android:text="The neighboring hospital requests your assistance! They would like to have a surgeon."
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/accept_request"
+                        style="@style/ButtonBlackText"
+                        android:layout_width="140dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/deny_request"
+                        android:background="@drawable/selector_button"
+                        android:text="Accept Request" />
+
+                    <Button
+                        android:id="@+id/deny_request"
+                        style="@style/ButtonBlackText"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/selector_button"
+                        android:text="Deny Request" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/bar"
+        android:layout_alignTop="@+id/title"
+        android:src="@drawable/red_x" />
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_alignLeft="@+id/bar"
+        android:layout_alignTop="@+id/title"
+        android:background="@drawable/background_with_border" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/timeLeftText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time Left: "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/timeLeftValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/timeLeftText"
+                android:layout_alignBottom="@+id/timeLeftText"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/timeLeftText"
+                android:text="--:--"
+                android:textColor="@color/red"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

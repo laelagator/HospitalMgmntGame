@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_universal"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="SET STARTING OPTIONS"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black" />
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/save_button"
+        android:layout_alignLeft="@+id/bar"
+        android:layout_alignRight="@+id/bar"
+        android:layout_below="@+id/bar" >
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/column1"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="3" >
+
+                <TextView
+                    android:id="@+id/interruption_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Start # of Patient As"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/interruption_text"
+                    android:layout_below="@+id/interruption_text"
+                    android:layout_marginTop="30dp"
+                    android:text="Start # of Patient Bs"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView01"
+                    android:layout_below="@+id/TextView01"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Doctors"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView02"
+                    android:layout_below="@+id/TextView02"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Nurses"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView03"
+                    android:layout_below="@+id/TextView03"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Surgeons"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView04"
+                    android:layout_below="@+id/TextView04"
+                    android:layout_marginTop="30dp"
+                    android:text="Total Time in Seconds"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/column2"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <EditText
+                    android:id="@+id/startPatientAET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startPatientBET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startPatientAET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startDoctorsET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startPatientBET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startNursesET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startDoctorsET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="4"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startSurgeonsET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startNursesET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/totalTimeET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startSurgeonsET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="300"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/column3"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="3" >
+                
+                <TextView
+                    android:id="@+id/otherDocsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/TextView08"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Other Doctors"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                
+                <TextView
+                    android:id="@+id/TextView08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView03"
+                    android:layout_below="@+id/TextView07"
+                    android:layout_marginTop="30dp"
+                    android:text="NH Start # of Patient Bs"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/otherDocsTV"
+                    android:layout_below="@+id/otherDocsTV"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Other Nurses"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView01"
+                    android:layout_below="@+id/TextView01"
+                    android:layout_marginTop="30dp"
+                    android:text="# of Other Surgeons"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextView02"
+                    android:layout_below="@+id/TextView02"
+                    android:layout_marginTop="30dp"
+                    android:text="Patient Help Time in Seconds"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                
+
+                <TextView
+                    android:id="@+id/TextView07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:text="NH Start # of Patient As"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+                
+                
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/column4"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+                
+                <EditText
+                    android:id="@+id/NHStartPatientAET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:text="1"
+                    android:textSize="20sp" />
+
+                
+                <EditText
+                    android:id="@+id/NHStartPatientBET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/NHStartPatientAET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:text="1"
+                    android:textSize="20sp" >
+                </EditText>
+                
+                <EditText
+                    android:id="@+id/startOtherDoctorsET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:layout_below="@+id/NHStartPatientBET"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startOtherNursesET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startOtherDoctorsET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/startOtherSurgeonsET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startOtherNursesET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="2"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/patientATimeET"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/startOtherSurgeonsET"
+                    android:layout_marginTop="35dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="16"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/save_button"
+        style="@style/ButtonBlackText"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/selector_button"
+        android:text="Save" />
+
+    <Spinner
+        android:id="@+id/cooperation_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_alignLeft="@+id/bar"
+        android:layout_alignTop="@+id/title"
+        android:background="@color/white" />
+    
+    <Spinner
+        android:id="@+id/patient_flow_pattern_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_alignRight="@+id/bar"
+        android:layout_alignTop="@+id/title"
+        android:background="@color/white" />
+    
+    <Spinner
+        android:id="@+id/practice_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_alignTop="@+id/title"
+        android:layout_toLeftOf="@+id/patient_flow_pattern_spinner"
+        android:layout_marginRight="10dp"
+        android:background="@color/white" />
+
+</RelativeLayout>

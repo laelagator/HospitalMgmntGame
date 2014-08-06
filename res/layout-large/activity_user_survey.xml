@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_universal"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="FILL OUT USER TRIAL INFO"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bar"
+        android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:padding="40dp"
+        android:background="@drawable/background_with_border" >
+
+        <EditText
+            android:id="@+id/user_id_ET"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="User ID" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/condition_ET"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_id_ET"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Condition" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/trial_ET"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/condition_ET"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Trial" >
+        </EditText>
+
+        <Button
+            android:id="@+id/proceed_button"
+            style="@style/ButtonBlackText"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/trial_ET"
+            android:layout_alignRight="@+id/trial_ET"
+            android:layout_below="@+id/trial_ET"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/selector_button"
+            android:text="Proceed to Game" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/settings_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_action_settings" />
+
+</RelativeLayout>
