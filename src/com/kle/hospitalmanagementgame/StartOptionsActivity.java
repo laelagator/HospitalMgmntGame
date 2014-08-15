@@ -2,15 +2,10 @@ package com.kle.hospitalmanagementgame;
 
 import java.util.ArrayList;
 
-import com.kle.hospitalmanagementgame.R;
-
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -20,10 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class StartOptionsActivity extends Activity{
 
@@ -71,18 +63,18 @@ public class StartOptionsActivity extends Activity{
 		NHStartAPatientET = (EditText) findViewById(R.id.NHStartPatientAET);
 		NHStartBPatientET = (EditText) findViewById(R.id.NHStartPatientBET);
 		
-		startAPatientET.setText(MainActivity.numberOfPatientAs+"");
-		startBPatientET.setText(MainActivity.numberOfPatientBs+"");
-		startDoctorsET.setText(MainActivity.numberOfDoctors+"");
-		startNursesET.setText(MainActivity.numberOfNurses+"");
-		startSurgeonsET.setText(MainActivity.numberOfSurgeons+"");
+		startAPatientET.setText(HospitalPeople.patientA +"");
+		startBPatientET.setText(HospitalPeople.patientB +"");
+		startDoctorsET.setText(HospitalPeople.doctors+"");
+		startNursesET.setText(HospitalPeople.nurses+"");
+		startSurgeonsET.setText(HospitalPeople.surgeons+"");
 		totalTimeET.setText(MainActivity.startTimeMilliseconds/1000+"");
-		startOtherDoctorsET.setText(MainActivity.otherNumberOfDoctors+"");
-		startOtherNursesET.setText(MainActivity.otherNumberOfNurses+"");
-		startOtherSurgeonsET.setText(MainActivity.otherNumberOfSurgeons+"");
+		startOtherDoctorsET.setText(HospitalPeople.npcDoctors+"");
+		startOtherNursesET.setText(HospitalPeople.npcNurses+"");
+		startOtherSurgeonsET.setText(HospitalPeople.npcSurgeons+"");
 		patientTimeET.setText(MainActivity.patientTimeLeftMilliseconds/1000+"");
-		NHStartAPatientET.setText(MainActivity.otherNumberOfPatientAs+"");
-		NHStartBPatientET.setText(MainActivity.otherNumberOfPatientBs+"");
+		NHStartAPatientET.setText(HospitalPeople.npcPatientA+"");
+		NHStartBPatientET.setText(HospitalPeople.npcPatientB+"");
 		
 		cooperationSpinner = (Spinner) findViewById(R.id.cooperation_spinner);
 		ArrayList<String> list = new ArrayList<String>();
@@ -123,18 +115,18 @@ public class StartOptionsActivity extends Activity{
 					cooperationSpinner.setSelection(0);
 				}
 				
-				startAPatientET.setText(MainActivity.numberOfPatientAs+"");
-				startBPatientET.setText(MainActivity.numberOfPatientBs+"");
-				startDoctorsET.setText(MainActivity.numberOfDoctors+"");
-				startNursesET.setText(MainActivity.numberOfNurses+"");
-				startSurgeonsET.setText(MainActivity.numberOfSurgeons+"");
+				startAPatientET.setText(HospitalPeople.patientA+"");
+				startBPatientET.setText(HospitalPeople.patientB+"");
+				startDoctorsET.setText(HospitalPeople.doctors+"");
+				startNursesET.setText(HospitalPeople.nurses+"");
+				startSurgeonsET.setText(HospitalPeople.surgeons+"");
 				totalTimeET.setText(MainActivity.startTimeMilliseconds/1000+"");
-				startOtherDoctorsET.setText(MainActivity.otherNumberOfDoctors+"");
-				startOtherNursesET.setText(MainActivity.otherNumberOfNurses+"");
-				startOtherSurgeonsET.setText(MainActivity.otherNumberOfSurgeons+"");
+				startOtherDoctorsET.setText(HospitalPeople.npcDoctors+"");
+				startOtherNursesET.setText(HospitalPeople.npcNurses+"");
+				startOtherSurgeonsET.setText(HospitalPeople.npcSurgeons+"");
 				patientTimeET.setText(MainActivity.patientTimeLeftMilliseconds/1000+"");
-				NHStartAPatientET.setText(MainActivity.otherNumberOfPatientAs+"");
-				NHStartBPatientET.setText(MainActivity.otherNumberOfPatientBs+"");
+				NHStartAPatientET.setText(HospitalPeople.npcPatientA+"");
+				NHStartBPatientET.setText(HospitalPeople.npcPatientB+"");
 			}
 
 			@Override
@@ -209,23 +201,23 @@ public class StartOptionsActivity extends Activity{
 					return;
 				}
 				
-				MainActivity.numberOfPatientAs = Integer.parseInt(startAPatientET.getText().toString());
-				MainActivity.numberOfPatientBs = Integer.parseInt(startBPatientET.getText().toString());
-				MainActivity.numberOfDoctors = Integer.parseInt(startDoctorsET.getText().toString());
-				MainActivity.numberOfNurses = Integer.parseInt(startNursesET.getText().toString());
-				MainActivity.numberOfSurgeons = Integer.parseInt(startSurgeonsET.getText().toString());
-				MainActivity.otherNumberOfDoctors = Integer.parseInt(startOtherDoctorsET.getText().toString());
-				MainActivity.otherNumberOfNurses = Integer.parseInt(startOtherNursesET.getText().toString());
-				MainActivity.otherNumberOfSurgeons = Integer.parseInt(startOtherSurgeonsET.getText().toString());
-				MainActivity.otherNumberOfPatientAs = Integer.parseInt(NHStartAPatientET.getText().toString());
-				MainActivity.otherNumberOfPatientBs = Integer.parseInt(NHStartBPatientET.getText().toString());
+				HospitalPeople.patientA = Integer.parseInt(startAPatientET.getText().toString());
+				HospitalPeople.patientB = Integer.parseInt(startBPatientET.getText().toString());
+				HospitalPeople.doctors = Integer.parseInt(startDoctorsET.getText().toString());
+				HospitalPeople.nurses = Integer.parseInt(startNursesET.getText().toString());
+				HospitalPeople.surgeons = Integer.parseInt(startSurgeonsET.getText().toString());
+				HospitalPeople.npcDoctors = Integer.parseInt(startOtherDoctorsET.getText().toString());
+				HospitalPeople.npcNurses = Integer.parseInt(startOtherNursesET.getText().toString());
+				HospitalPeople.npcDoctors = Integer.parseInt(startOtherSurgeonsET.getText().toString());
+				HospitalPeople.npcPatientA = Integer.parseInt(NHStartAPatientET.getText().toString());
+				HospitalPeople.npcPatientB = Integer.parseInt(NHStartBPatientET.getText().toString());
 				MainActivity.startTimeMilliseconds = Integer.parseInt(totalTimeET.getText().toString())*1000;
 				MainActivity.patientTimeLeftMilliseconds = Integer.parseInt(patientTimeET.getText().toString()) * 1000;
 				
 				if(cooperationSpinner.getSelectedItemPosition() == 0)
-					MainActivity.highCooperation = true;
+					CooperationLevel.highCooperation = true;
 				else
-					MainActivity.highCooperation = false;
+					CooperationLevel.highCooperation = false;
 				
 				if(patientFlowPatternSpinner.getSelectedItemPosition() == 0)
 					MainActivity.earlySlowPattern = true;
