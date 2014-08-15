@@ -4,9 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
-
 import com.kle.hospitalmanagementgame.R;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -29,16 +28,7 @@ public class MainActivity extends Activity{
 	static Activity mActivity;
 
 	//set initial values
-	public static int numberOfPatientAs = 1;
-	public static int numberOfPatientBs = 0;
-	public static int numberOfDoctors = 3;
-	public static int numberOfNurses = 3;
-	public static int numberOfSurgeons = 3;
-	public static int otherNumberOfDoctors = 3;
-	public static int otherNumberOfNurses = 3;
-	public static int otherNumberOfSurgeons = 3;
-	public static int otherNumberOfPatientAs = 0;
-	public static int otherNumberOfPatientBs = 1;
+	
 	public static int startTimeMilliseconds = 480000;
 	public static int patientTimeLeftMilliseconds = 60000;
 	public static int score = 0;
@@ -55,7 +45,6 @@ public class MainActivity extends Activity{
 	int numPatientsForMediumQuintuplet = 5;
 	int numPatientsForLowQuintuplet = 2;
 
-	public static boolean highCooperation = true;
 	public static boolean earlySlowPattern = true;
 	public static boolean practiceRound = false;
 
@@ -253,7 +242,7 @@ public class MainActivity extends Activity{
 		updateSideBarMain();
 
 		assignPatientToRoomButton.setOnClickListener(new OnClickListener() {
-
+		//when clicked, patient a and patient b buttons show
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
@@ -266,7 +255,7 @@ public class MainActivity extends Activity{
 		});
 
 		assignResourceToRoomButton.setOnClickListener(new OnClickListener() {
-
+		//when clicked, HospitalPeople.doctors HospitalPeople.nurses and HospitalPeople.surgeons buttons show
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
@@ -280,7 +269,7 @@ public class MainActivity extends Activity{
 		});
 
 		requestResourceButton.setOnClickListener(new OnClickListener() {
-
+			//when clicked, HospitalPeople.doctors HospitalPeople.nurses and HospitalPeople.surgeons buttons show
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
@@ -302,7 +291,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
-					if(numberOfPatientAs > 0){
+					if(HospitalPeople.patientA > 0){
 						colorizeRoomForPatients();
 						patientAButton.setBackgroundResource(R.drawable.green_button_selected_button);
 						patientBButton.setEnabled(false);
@@ -320,7 +309,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
-					if(numberOfPatientBs > 0){
+					if(HospitalPeople.patientB > 0){
 						colorizeRoomForPatients();
 						patientBButton.setBackgroundResource(R.drawable.green_button_selected_button);
 						patientAButton.setEnabled(false);
@@ -354,7 +343,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
-					if(numberOfDoctors > 0){
+					if(HospitalPeople.doctors > 0){
 						colorizeRoomForDoctor();
 						doctorsButton.setBackgroundResource(R.drawable.green_button_selected_button);
 						nursesButton.setEnabled(false);
@@ -364,7 +353,7 @@ public class MainActivity extends Activity{
 						setRoomClicksForDoctors();
 					}else{
 						writeStringAsFile(createCSVLine("FailAssign,Doctor"));
-						Toast.makeText(mActivity, "There are no available doctors. Wait for a doctor to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
+						Toast.makeText(mActivity, "There are no available HospitalPeople.doctors. Wait for a doctor to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
@@ -375,7 +364,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
-					if(numberOfNurses > 0){
+					if(HospitalPeople.nurses > 0){
 						colorizeRoomForNurse();
 						nursesButton.setBackgroundResource(R.drawable.green_button_selected_button);
 						doctorsButton.setEnabled(false);
@@ -385,7 +374,7 @@ public class MainActivity extends Activity{
 						setRoomClicksForNurse();
 					}else{
 						writeStringAsFile(createCSVLine("FailAssign,Nurse"));
-						Toast.makeText(mActivity, "There are no available nurses. Wait for a nurse to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
+						Toast.makeText(mActivity, "There are no available HospitalPeople.nurses. Wait for a nurse to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
@@ -396,7 +385,7 @@ public class MainActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
-					if(numberOfSurgeons > 0){
+					if(HospitalPeople.surgeons > 0){
 						colorizeRoomForSurgeon();
 						surgeonsButton.setBackgroundResource(R.drawable.green_button_selected_button);
 						doctorsButton.setEnabled(false);
@@ -406,7 +395,7 @@ public class MainActivity extends Activity{
 						setRoomClicksForSurgeons();
 					}else{
 						writeStringAsFile(createCSVLine("FailAssign,Surgeon"));
-						Toast.makeText(mActivity, "There are no available surgeons. Wait for a surgeon to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
+						Toast.makeText(mActivity, "There are no available HospitalPeople.surgeons. Wait for a surgeon to finish with a patient or request one from the other hospital.", Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
@@ -423,9 +412,9 @@ public class MainActivity extends Activity{
 			public void onClick(View v) {
 				if(!interruptOn){
 					writeStringAsFile(createCSVLine("PlayerRequest,Doctor"));
-					if(fulfillRequestAlgorithm(numberOfDoctors, otherNumberOfDoctors)){
-						numberOfDoctors++;
-						otherNumberOfDoctors--;
+					if(CooperationLevel.fulfillRequestAlgorithm(HospitalPeople.doctors, HospitalPeople.npcDoctors)){
+						HospitalPeople.doctors++;
+						HospitalPeople.npcDoctors--;
 						Toast.makeText(mActivity, "The other hospital has given you a doctor." , Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("AgentResponse,Accept"));
 					}else{
@@ -439,14 +428,14 @@ public class MainActivity extends Activity{
 		});
 
 		nursesButton2.setOnClickListener(new OnClickListener() {
-
+			//Writes CSV line for nurse
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
 					writeStringAsFile(createCSVLine("PlayerRequest,Nurse"));
-					if(fulfillRequestAlgorithm(numberOfNurses, otherNumberOfNurses)){
-						numberOfNurses++;
-						otherNumberOfNurses--;
+					if(CooperationLevel.fulfillRequestAlgorithm(HospitalPeople.nurses, HospitalPeople.npcNurses)){
+						HospitalPeople.nurses++;
+						HospitalPeople.npcNurses--;
 						Toast.makeText(mActivity, "The other hospital has given you a nurse." , Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("AgentResponse,Accept"));
 					}else{
@@ -460,14 +449,14 @@ public class MainActivity extends Activity{
 		});
 
 		surgeonsButton2.setOnClickListener(new OnClickListener() {
-
+			//Writes CSV line for surgeon
 			@Override
 			public void onClick(View v) {
 				if(!interruptOn){
 					writeStringAsFile(createCSVLine("PlayerRequest,Surgeon"));
-					if(fulfillRequestAlgorithm(numberOfSurgeons, otherNumberOfSurgeons)){
-						numberOfSurgeons++;
-						otherNumberOfSurgeons--;
+					if(CooperationLevel.fulfillRequestAlgorithm(HospitalPeople.surgeons, HospitalPeople.npcSurgeons)){
+						HospitalPeople.surgeons++;
+						HospitalPeople.npcSurgeons--;
 						Toast.makeText(mActivity, "The other hospital has given you a surgeon." , Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("AgentResponse,Accept"));
 					}else{
@@ -479,7 +468,6 @@ public class MainActivity extends Activity{
 				}
 			}
 		});
-
 		room1Main = (RelativeLayout) findViewById(R.id.room_1);
 		vacantText1 = (TextView) findViewById(R.id.vacant_1_text);
 		collectButton1 = (Button) findViewById(R.id.collect_button_1);
@@ -616,12 +604,12 @@ public class MainActivity extends Activity{
 
 	private void updateSideBarMain(){
 		updatePatientsInSideBar();
-		doctorsValue1.setText(numberOfDoctors+"");
-		nursesValue1.setText(numberOfNurses+"");
-		surgeonsValue1.setText(numberOfSurgeons+"");
-		otherDoctorsValue.setText(otherNumberOfDoctors+"");
-		otherNursesValue.setText(otherNumberOfNurses+"");
-		otherSurgeonsValue.setText(otherNumberOfSurgeons+"");
+		doctorsValue1.setText(HospitalPeople.doctors+"");
+		nursesValue1.setText(HospitalPeople.nurses+"");
+		surgeonsValue1.setText(HospitalPeople.surgeons+"");
+		otherDoctorsValue.setText(HospitalPeople.npcDoctors+"");
+		otherNursesValue.setText(HospitalPeople.npcNurses+"");
+		otherSurgeonsValue.setText(HospitalPeople.npcSurgeons+"");
 	}
 
 	private void updatePatientsInSideBar(){
@@ -639,7 +627,7 @@ public class MainActivity extends Activity{
 		circleB5.setVisibility(View.INVISIBLE);
 		circleB6.setVisibility(View.INVISIBLE);
 
-		switch(numberOfPatientAs){
+		switch(HospitalPeople.patientA){
 		case 1:
 			circleA1.setVisibility(View.VISIBLE);
 			break;
@@ -677,7 +665,7 @@ public class MainActivity extends Activity{
 			break;
 		}
 
-		switch(numberOfPatientBs){
+		switch(HospitalPeople.patientB){
 		case 1:
 			circleB1.setVisibility(View.VISIBLE);
 			break;
@@ -716,7 +704,7 @@ public class MainActivity extends Activity{
 		}
 
 		//set color of circles
-		int total = numberOfPatientAs+numberOfPatientBs;
+		int total = HospitalPeople.patientA+HospitalPeople.patientB;
 		if(total > 0 && total <= 2)
 			setCircleColors(R.drawable.green_circle);
 		else if(total > 2 && total <= 4)
@@ -725,23 +713,23 @@ public class MainActivity extends Activity{
 			setCircleColors(R.drawable.red_circle);
 		//
 		//old way
-		//				if(otherNumberOfPatientAs == 4 || otherNumberOfPatientAs == 5)
+		//				if(HospitalPeople.npcPatientA == 4 || HospitalPeople.npcPatientA == 5)
 		//					circleOtherA.setImageResource(R.drawable.yellow_square);
-		//				else if(otherNumberOfPatientAs >= 6)
+		//				else if(HospitalPeople.npcPatientA >= 6)
 		//					circleOtherA.setImageResource(R.drawable.red_square);
 		//				else
 		//					circleOtherA.setImageResource(R.drawable.green_square);
 		//		
-		//				if(otherNumberOfPatientBs == 4 || otherNumberOfPatientBs == 5)
+		//				if(HospitalPeople.npcPatientB == 4 || HospitalPeople.npcPatientB == 5)
 		//					circleOtherB.setImageResource(R.drawable.yellow_square);
-		//				else if(otherNumberOfPatientBs >= 6)
+		//				else if(HospitalPeople.npcPatientB >= 6)
 		//					circleOtherB.setImageResource(R.drawable.red_square);
 		//				else
 		//					circleOtherB.setImageResource(R.drawable.green_square);
 
 		//new way
 
-		int totalOther = otherNumberOfPatientAs+otherNumberOfPatientBs;
+		int totalOther = HospitalPeople.npcPatientA+HospitalPeople.npcPatientB;
 		if(totalOther > 0 && totalOther <= 2){
 			circleOtherA.setImageResource(R.drawable.green_square);
 			circleOtherB.setImageResource(R.drawable.green_square);
@@ -795,16 +783,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[0].collect = false;
 					if(roomList[0].patient.equals("A"))
-						numberOfDoctors++;
+						HospitalPeople.doctors++;
 					else if(roomList[0].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.surgeons++;
 
 					roomList[0].patient = "";
 					roomList[0].numDoctor = 0;
 					roomList[0].numSurgeon = 0;
 					roomList[0].numNurse = 0;
 					roomList[0].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText1.setText("-:--");
 
 					updateSideBarMain();
@@ -828,7 +816,7 @@ public class MainActivity extends Activity{
 					if(roomList[0].numDoctor == 1){
 						doctorSurgeonText1.setText("1 Doctor");
 					}else{
-						doctorSurgeonText1.setText("0 Doctors");
+						doctorSurgeonText1.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText1.setText("Patient B");
@@ -836,14 +824,14 @@ public class MainActivity extends Activity{
 					if(roomList[0].numSurgeon == 1){
 						doctorSurgeonText1.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText1.setText("0 Surgeons");
+						doctorSurgeonText1.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[0].numNurse == 1){
 					nurseText1.setText("1 Nurse");
 				}else{
-					nurseText1.setText("0 Nurses");
+					nurseText1.setText("0 HospitalPeople.nurses");
 				}
 
 				startTimerForRoom(0, timeLeftText1);
@@ -862,16 +850,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[1].collect = false;
 					if(roomList[1].patient.equals("A"))
-						numberOfDoctors++;
+						HospitalPeople.doctors++;
 					else if(roomList[1].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.surgeons++;
 
 					roomList[1].patient = "";
 					roomList[1].numDoctor = 0;
 					roomList[1].numSurgeon = 0;
 					roomList[1].numNurse = 0;
 					roomList[1].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText2.setText("-:--");
 
 					updateSideBarMain();
@@ -895,7 +883,7 @@ public class MainActivity extends Activity{
 					if(roomList[1].numDoctor == 1){
 						doctorSurgeonText2.setText("1 Doctor");
 					}else{
-						doctorSurgeonText2.setText("0 Doctors");
+						doctorSurgeonText2.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText2.setText("Patient B");
@@ -903,14 +891,14 @@ public class MainActivity extends Activity{
 					if(roomList[1].numSurgeon == 1){
 						doctorSurgeonText2.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText2.setText("0 Surgeons");
+						doctorSurgeonText2.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[1].numNurse == 1){
 					nurseText2.setText("1 Nurse");
 				}else{
-					nurseText2.setText("0 Nurses");
+					nurseText2.setText("0 HospitalPeople.nurses");
 				}
 
 				startTimerForRoom(1, timeLeftText2);
@@ -928,16 +916,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[2].collect = false;
 					if(roomList[2].patient.equals("A"))
-						numberOfDoctors++;
+						HospitalPeople.doctors++;
 					else if(roomList[2].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.surgeons++;
 
 					roomList[2].patient = "";
 					roomList[2].numDoctor = 0;
 					roomList[2].numSurgeon = 0;
 					roomList[2].numNurse = 0;
 					roomList[2].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText3.setText("-:--");
 
 					updateSideBarMain();
@@ -961,7 +949,7 @@ public class MainActivity extends Activity{
 					if(roomList[2].numDoctor == 1){
 						doctorSurgeonText3.setText("1 Doctor");
 					}else{
-						doctorSurgeonText3.setText("0 Doctors");
+						doctorSurgeonText3.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText3.setText("Patient B");
@@ -969,14 +957,14 @@ public class MainActivity extends Activity{
 					if(roomList[2].numSurgeon == 1){
 						doctorSurgeonText3.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText3.setText("0 Surgeons");
+						doctorSurgeonText3.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[2].numNurse == 1){
 					nurseText3.setText("1 Nurse");
 				}else{
-					nurseText3.setText("0 Nurses");
+					nurseText3.setText("0 HospitalPeople.nurses");
 				}
 
 				startTimerForRoom(2, timeLeftText3);
@@ -994,16 +982,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[3].collect = false;
 					if(roomList[3].patient.equals("A"))
-						numberOfDoctors++;
+						HospitalPeople.doctors++;
 					else if(roomList[3].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.surgeons++;
 
 					roomList[3].patient = "";
 					roomList[3].numDoctor = 0;
 					roomList[3].numSurgeon = 0;
 					roomList[3].numNurse = 0;
 					roomList[3].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText4.setText("-:--");
 
 					updateSideBarMain();
@@ -1027,7 +1015,7 @@ public class MainActivity extends Activity{
 					if(roomList[3].numDoctor == 1){
 						doctorSurgeonText4.setText("1 Doctor");
 					}else{
-						doctorSurgeonText4.setText("0 Doctors");
+						doctorSurgeonText4.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText4.setText("Patient B");
@@ -1035,20 +1023,21 @@ public class MainActivity extends Activity{
 					if(roomList[3].numSurgeon == 1){
 						doctorSurgeonText4.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText4.setText("0 Surgeons");
+						doctorSurgeonText4.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[3].numNurse == 1){
 					nurseText4.setText("1 Nurse");
 				}else{
-					nurseText4.setText("0 Nurses");
+					nurseText4.setText("0 HospitalPeople.nurses");
 				}
 
 				startTimerForRoom(3, timeLeftText4);
 			}
 		}
 
+		
 		if(roomList[4].collect){
 			collectButton5.setVisibility(View.VISIBLE);
 			vacantText5.setVisibility(View.GONE);
@@ -1060,16 +1049,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[4].collect = false;
 					if(roomList[4].patient.equals("A"))
-						numberOfDoctors++;
+						HospitalPeople.doctors++;
 					else if(roomList[4].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.surgeons++;
 
 					roomList[4].patient = "";
 					roomList[4].numDoctor = 0;
 					roomList[4].numSurgeon = 0;
 					roomList[4].numNurse = 0;
 					roomList[4].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText5.setText("-:--");
 
 					updateSideBarMain();
@@ -1093,7 +1082,7 @@ public class MainActivity extends Activity{
 					if(roomList[4].numDoctor == 1){
 						doctorSurgeonText5.setText("1 Doctor");
 					}else{
-						doctorSurgeonText5.setText("0 Doctors");
+						doctorSurgeonText5.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText5.setText("Patient B");
@@ -1101,14 +1090,14 @@ public class MainActivity extends Activity{
 					if(roomList[4].numSurgeon == 1){
 						doctorSurgeonText5.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText5.setText("0 Surgeons");
+						doctorSurgeonText5.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[4].numNurse == 1){
 					nurseText5.setText("1 Nurse");
 				}else{
-					nurseText5.setText("0 Nurses");
+					nurseText5.setText("0 HospitalPeople.nurses");
 				}
 
 				startTimerForRoom(4, timeLeftText5);
@@ -1126,16 +1115,16 @@ public class MainActivity extends Activity{
 					//free up resources
 					roomList[5].collect = false;
 					if(roomList[5].patient.equals("A"))
-						numberOfDoctors++;
-					else if(roomList[0].patient.equals("B"))
-						numberOfSurgeons++;
+						HospitalPeople.doctors++;
+					else if(roomList[5].patient.equals("B"))
+						HospitalPeople.surgeons++;
 
 					roomList[5].patient = "";
 					roomList[5].numDoctor = 0;
 					roomList[5].numSurgeon = 0;
 					roomList[5].numNurse = 0;
 					roomList[5].timeStarted = false;
-					numberOfNurses++;
+					HospitalPeople.nurses++;
 					timeLeftText6.setText("-:--");
 
 					updateSideBarMain();
@@ -1159,7 +1148,7 @@ public class MainActivity extends Activity{
 					if(roomList[5].numDoctor == 1){
 						doctorSurgeonText6.setText("1 Doctor");
 					}else{
-						doctorSurgeonText6.setText("0 Doctors");
+						doctorSurgeonText6.setText("0 HospitalPeople.doctors");
 					}
 				}else{
 					patientText6.setText("Patient B");
@@ -1167,14 +1156,14 @@ public class MainActivity extends Activity{
 					if(roomList[5].numSurgeon == 1){
 						doctorSurgeonText6.setText("1 Surgeon");
 					}else{
-						doctorSurgeonText6.setText("0 Surgeons");
+						doctorSurgeonText6.setText("0 HospitalPeople.surgeons");
 					}
 				}
 
 				if(roomList[5].numNurse == 1){
 					nurseText6.setText("1 Nurse");
 				}else{
-					nurseText6.setText("0 Nurses");
+					nurseText6.setText("0 HospitalPeople.nurses");
 				}
 			}
 
@@ -1353,7 +1342,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[0].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1369,7 +1358,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[1].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1385,7 +1374,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[2].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1401,7 +1390,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[3].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1417,7 +1406,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[4].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1433,7 +1422,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[5].patient = "A";
-					numberOfPatientAs--;
+					HospitalPeople.patientA--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1451,7 +1440,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[0].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1467,7 +1456,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[1].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1483,7 +1472,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[2].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1499,7 +1488,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[3].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1515,7 +1504,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[4].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1531,7 +1520,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[5].patient = "B";
-					numberOfPatientBs--;
+					HospitalPeople.patientB--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1549,7 +1538,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[0].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1569,7 +1558,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[1].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1589,7 +1578,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[2].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1609,7 +1598,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[3].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1629,7 +1618,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[4].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1649,7 +1638,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[5].numNurse = 1;
-					numberOfNurses--;
+					HospitalPeople.nurses--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1671,7 +1660,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[0].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1691,7 +1680,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[1].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1711,7 +1700,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[2].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1731,7 +1720,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[3].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1751,7 +1740,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[4].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1771,7 +1760,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[5].numDoctor = 1;
-					numberOfDoctors--;
+					HospitalPeople.doctors--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1793,7 +1782,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[0].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1813,7 +1802,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[1].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1833,7 +1822,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[2].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1853,7 +1842,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[3].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1873,7 +1862,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[4].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1893,7 +1882,7 @@ public class MainActivity extends Activity{
 				public void onClick(View v) {
 					colorizeRoomsNormal();
 					roomList[5].numSurgeon = 1;
-					numberOfSurgeons--;
+					HospitalPeople.surgeons--;
 					updateSideBarMain();
 					resetAllButtons();
 					setRoomInfo();
@@ -1934,7 +1923,13 @@ public class MainActivity extends Activity{
 		room5Main.setClickable(false);
 		room6Main.setClickable(false);
 	}
-
+/**
+ * This method keep track of the time left in this certain instance ...
+ * 
+ * @param index This is the room number.
+ * @param timeLeftForRoom this is the time left for....
+ */
+	@SuppressLint("DefaultLocale")
 	private void startTimerForRoom(final int index, final TextView timeLeftForRoom){
 		if(roomList[index].numNurse == 1 && !roomList[index].timeStarted){
 			if(roomList[index].patient.equals("A") && roomList[index].numDoctor == 1){
@@ -2048,6 +2043,7 @@ public class MainActivity extends Activity{
 				//main countdown timer
 				new CountDownTimer(startTimeMilliseconds, 1000) {
 
+					@SuppressLint("DefaultLocale")
 					public void onTick(long millisUntilFinished) {
 						String minutesLeft = String.format("%02d", millisUntilFinished / 60000);
 						String secondsLeft = String.format("%02d", millisUntilFinished / 1000 % 60);
@@ -2132,8 +2128,8 @@ public class MainActivity extends Activity{
 				if(!mainTimeLeft.getText().toString().equals("00:00") && start){
 					int patient = 1 + (int)(Math.random() * ((1 - 0) + 1));
 					if(patient % 2 == 0){
-						if(numberOfPatientAs+numberOfPatientBs < 6){
-							numberOfPatientAs++;
+						if(HospitalPeople.patientA+HospitalPeople.patientB < 6){
+							HospitalPeople.patientA++;
 							writeStringAsFile(createCSVLine("PlayerPatientAdded,A"));
 						}else{
 							totalMissedPatients++;
@@ -2142,8 +2138,8 @@ public class MainActivity extends Activity{
 						updateSideBarMain();
 						newPatient();
 					}else if(patient % 2 == 1){
-						if(numberOfPatientAs+numberOfPatientBs < 6){
-							numberOfPatientBs++;
+						if(HospitalPeople.patientA+HospitalPeople.patientB < 6){
+							HospitalPeople.patientB++;
 							writeStringAsFile(createCSVLine("PlayerPatientAdded,B"));
 						}else{
 							totalMissedPatients++;
@@ -2209,8 +2205,8 @@ public class MainActivity extends Activity{
 				if(!mainTimeLeft.getText().toString().equals("00:00") && start){
 					int patient = 1 + (int)(Math.random() * ((1 - 0) + 1));
 					if(patient % 2 == 0){
-						if(otherNumberOfPatientAs+otherNumberOfPatientBs < 6){
-							otherNumberOfPatientAs++;
+						if(HospitalPeople.npcPatientA+HospitalPeople.npcPatientB < 6){
+							HospitalPeople.npcPatientA++;
 							writeStringAsFile(createCSVLine("AgentPatientAdded,A"));
 						}else{
 							NHTotalMissedPatients++;
@@ -2219,8 +2215,8 @@ public class MainActivity extends Activity{
 						updateSideBarMain();
 						newPatientForNH();
 					}else if(patient % 2 == 1){
-						if(otherNumberOfPatientAs+otherNumberOfPatientBs < 6){
-							otherNumberOfPatientBs++;
+						if(HospitalPeople.npcPatientA+HospitalPeople.npcPatientB < 6){
+							HospitalPeople.npcPatientB++;
 							writeStringAsFile(createCSVLine("AgentPatientAdded,B"));
 						}else{
 							NHTotalMissedPatients++;
@@ -2265,21 +2261,26 @@ public class MainActivity extends Activity{
 			} catch (IOException e) {}
 		}
 	}
-
+/**
+ * Makes line of data related to game in a comma separated file which can be accessed 
+ * in the device's download folder.
+ * @param firstHalf
+ * @return
+ */
 	public String createCSVLine(String firstHalf){
 		int totalScore = score + otherScore;
 		String csvLine = firstHalf + ","
 				+ mainTimeLeft.getText().toString() + ","
-				+ numberOfNurses + ","
-				+ numberOfDoctors + ","
-				+ numberOfSurgeons + ","
-				+ otherNumberOfNurses + ","
-				+ otherNumberOfDoctors + ","
-				+ otherNumberOfSurgeons + ","
-				+ numberOfPatientAs + ","
-				+ numberOfPatientBs + ","
-				+ otherNumberOfPatientAs + ","
-				+ otherNumberOfPatientBs + ","
+				+ HospitalPeople.nurses + ","
+				+ HospitalPeople.doctors + ","
+				+ HospitalPeople.surgeons + ","
+				+ HospitalPeople.npcNurses + ","
+				+ HospitalPeople.npcDoctors + ","
+				+ HospitalPeople.npcSurgeons + ","
+				+ HospitalPeople.patientA + ","
+				+ HospitalPeople.patientB + ","
+				+ HospitalPeople.npcPatientA + ","
+				+ HospitalPeople.npcPatientB + ","
 				+ score + ","
 				+ otherScore + ","
 				+ totalScore;
@@ -2287,82 +2288,7 @@ public class MainActivity extends Activity{
 		return csvLine;
 	}
 
-	public boolean fulfillRequestAlgorithm(int currentResources, int otherHospitalResources){
-		if(otherHospitalResources == 0){
-			return false;
-		}
-
-		//old way
-		//		if(highCooperation){
-		//			if((numberOfPatientAs + numberOfPatientBs) > (otherNumberOfPatientAs + otherNumberOfPatientBs))
-		//				return true;
-		//			else if((numberOfPatientAs + numberOfPatientBs) == (otherNumberOfPatientAs + otherNumberOfPatientBs)){
-		//				if(score > otherScore)
-		//					return true;
-		//				else
-		//					return false;
-		//			}else
-		//				return false;
-		//		}else{
-		//			double total = (double) currentResources + (double) otherHospitalResources;
-		//			double percentage = ((double) otherHospitalResources)/total * 100;
-		//
-		//			Random random = new Random();
-		//			int rand = random.nextInt(100);
-		//			if(rand < percentage)
-		//				return true;
-		//			else
-		//				return false;
-		//		}
-
-		//new way 5/14/14
-		/*
-	  		--Cooperative--
-		     0-2, 100% accept
-		     3-4, 50% accept
-		     5-6, 25% accept
-		     --Competitive--
-		     0-2, 50% accept
-		     3-4, 25% accept
-		     5-6, 0% accept
-		 */
-		int total = otherNumberOfPatientAs + otherNumberOfPatientBs;
-		Random random = new Random();
-
-		if(highCooperation){
-			if(total >= 0 && total <= 2)
-				return true;
-			else if(total > 2 && total <= 4){
-				int rand = random.nextInt(2);
-				if(rand == 0)
-					return true;
-				else
-					return false;
-			}else{
-				int rand = random.nextInt(4);
-				if(rand == 0)
-					return true;
-				else
-					return false;
-			}
-		}else{
-			if(total >= 0 && total <= 2){
-				int rand = random.nextInt(2);
-				if(rand == 0)
-					return true;
-				else
-					return false;
-			}else if(total > 2 && total <= 4){
-				int rand = random.nextInt(4);
-				if(rand == 0)
-					return true;
-				else
-					return false;
-			}else{
-				return false;
-			}
-		}
-	}
+	
 
 	private void interruptionRequest(int resourceValue){
 		//0 = doctor
@@ -2370,40 +2296,40 @@ public class MainActivity extends Activity{
 		//2 = surgeon
 		if(!mainTimeLeft.getText().toString().equals("00:00") && start){
 			int resource = 0;
-			if(highCooperation){
+			if(CooperationLevel.highCooperation){
 
 				//first look at what's needed and if user has that resource
 				//if user does not have resource, it will look at what else it needs and request that
 				//if user still does not have resource, it will not request
 
 				if(resourceValue == 0){
-					if(numberOfDoctors > 0)//check if doctor is available to take
+					if(HospitalPeople.doctors > 0)//check if doctor is available to take
 						resource = 0;
-					else if(otherNumberOfNurses == 0 && numberOfNurses > 0){ //otherwise check if need nurse and request if they have it
+					else if(HospitalPeople.npcNurses == 0 && HospitalPeople.nurses > 0){ //otherwise check if need nurse and request if they have it
 						resource = 1;
-					}else if(otherNumberOfSurgeons == 0 && otherNumberOfPatientBs > 0 && numberOfSurgeons > 0){//otherwise check if need surgeon and they have it
+					}else if(HospitalPeople.npcSurgeons == 0 && HospitalPeople.npcPatientB > 0 && HospitalPeople.surgeons > 0){//otherwise check if need surgeon and they have it
 						resource = 2;
 					}else{ //skip request if nothing is needed
 						NHHelpPatient(8000);
 						return;
 					}
 				}else if(resourceValue == 1){
-					if(numberOfNurses > 0) //check if nurse is available to take
+					if(HospitalPeople.nurses > 0) //check if nurse is available to take
 						resource = 1;
-					else if(otherNumberOfDoctors == 0 && otherNumberOfPatientAs > 0 && numberOfDoctors > 0){
+					else if(HospitalPeople.npcDoctors == 0 && HospitalPeople.npcPatientA > 0 && HospitalPeople.doctors > 0){
 						resource = 0;
-					}else if(otherNumberOfSurgeons == 0 && otherNumberOfPatientBs > 0 && numberOfSurgeons > 0){
+					}else if(HospitalPeople.npcSurgeons == 0 && HospitalPeople.npcPatientB > 0 && HospitalPeople.surgeons > 0){
 						resource = 2;
 					}else{
 						NHHelpPatient(8000);
 						return;
 					}
 				}else if(resourceValue == 2){
-					if(numberOfSurgeons > 0)
+					if(HospitalPeople.surgeons > 0)
 						resource = 2;
-					else if(otherNumberOfNurses == 0 && numberOfNurses > 0){
+					else if(HospitalPeople.npcNurses == 0 && HospitalPeople.nurses > 0){
 						resource = 1;
-					}else if(otherNumberOfDoctors == 0 && otherNumberOfPatientAs > 0 && numberOfDoctors > 0){
+					}else if(HospitalPeople.npcDoctors == 0 && HospitalPeople.npcPatientA > 0 && HospitalPeople.doctors > 0){
 						resource = 0;
 					}else{
 						NHHelpPatient(8000);
@@ -2476,32 +2402,32 @@ public class MainActivity extends Activity{
 			public void onClick(DialogInterface dialog, int which) { 
 
 				if(resource.equals("doctor")){
-					if(numberOfDoctors == 0){
-						Toast.makeText(mActivity, "You don't have any available doctors to lend.", Toast.LENGTH_SHORT).show();
+					if(HospitalPeople.doctors == 0){
+						Toast.makeText(mActivity, "You don't have any available HospitalPeople.doctors to lend.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("FailResponse,Doctor"));
 					}else{
-						numberOfDoctors--;
-						otherNumberOfDoctors++;
+						HospitalPeople.doctors--;
+						HospitalPeople.npcDoctors++;
 						Toast.makeText(mActivity, "A doctor has been sent to the other hospital.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("PlayerResponse,Accept"));
 					}
 				}else if(resource.equals("nurse")){
-					if(numberOfNurses == 0){
-						Toast.makeText(mActivity, "You don't have any available nurses to lend.", Toast.LENGTH_SHORT).show();
+					if(HospitalPeople.nurses == 0){
+						Toast.makeText(mActivity, "You don't have any available HospitalPeople.nurses to lend.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("FailResponse,Nurse"));
 					}else{
-						numberOfNurses--;
-						otherNumberOfNurses++;
+						HospitalPeople.nurses--;
+						HospitalPeople.npcNurses++;
 						Toast.makeText(mActivity, "A nurse has been sent to the other hospital.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("PlayerResponse,Accept"));
 					}
 				}else if(resource.equals("surgeon")){
-					if(numberOfSurgeons == 0){
-						Toast.makeText(mActivity, "You don't have any available surgeons to lend.", Toast.LENGTH_SHORT).show();
+					if(HospitalPeople.surgeons == 0){
+						Toast.makeText(mActivity, "You don't have any available HospitalPeople.surgeons to lend.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("FailResponse,Surgeon"));
 					}else{
-						numberOfSurgeons--;
-						otherNumberOfSurgeons++;
+						HospitalPeople.surgeons--;
+						HospitalPeople.npcSurgeons++;
 						Toast.makeText(mActivity, "A surgeon has been sent to the other hospital.", Toast.LENGTH_SHORT).show();
 						writeStringAsFile(createCSVLine("PlayerResponse,Accept"));
 					}
@@ -2525,7 +2451,10 @@ public class MainActivity extends Activity{
 		})
 		.show();
 	}
-
+/**
+ * The non-player hospital helps patients according to this function.
+ * @param millisecond Time left in game
+ */
 	private void NHHelpPatient(int millisecond){
 		new CountDownTimer(millisecond, 10000) {
 
@@ -2536,33 +2465,33 @@ public class MainActivity extends Activity{
 				if(!mainTimeLeft.getText().toString().equals("00:00") && start){
 					int patientChoice;
 
-					if(otherNumberOfPatientAs > 0 && otherNumberOfPatientBs > 0 && otherNumOfRooms != 6){
+					if(HospitalPeople.npcPatientA > 0 && HospitalPeople.npcPatientB > 0 && otherNumOfRooms != 6){
 						Random random = new Random();
 						patientChoice = random.nextInt(1);
-					}else if(otherNumberOfPatientAs > 0)
+					}else if(HospitalPeople.npcPatientA > 0)
 						patientChoice = 0;
-					else if(otherNumberOfPatientBs > 0)
+					else if(HospitalPeople.npcPatientB > 0)
 						patientChoice = 1;
 					else
 						patientChoice = 2;
 
 					if(patientChoice == 0){
 						//Patient A
-						if(otherNumberOfDoctors > 0 && otherNumberOfNurses > 0)
+						if(HospitalPeople.npcDoctors > 0 && HospitalPeople.npcNurses > 0)
 						{
-							otherNumberOfPatientAs--;
-							otherNumberOfDoctors--;
-							otherNumberOfNurses--;
+							HospitalPeople.npcPatientA--;
+							HospitalPeople.npcDoctors--;
+							HospitalPeople.npcNurses--;
 							NHCollectPatient("A");
 						}else{
-							if(otherNumberOfSurgeons > 0 && otherNumberOfNurses > 0 && otherNumberOfPatientBs > 0)
+							if(HospitalPeople.npcSurgeons > 0 && HospitalPeople.npcNurses > 0 && HospitalPeople.npcPatientB > 0)
 							{
-								otherNumberOfPatientBs--;
-								otherNumberOfSurgeons--;
-								otherNumberOfNurses--;
+								HospitalPeople.npcPatientB--;
+								HospitalPeople.npcSurgeons--;
+								HospitalPeople.npcNurses--;
 								NHCollectPatient("B");
 							}else{
-								if(otherNumberOfDoctors == 0)
+								if(HospitalPeople.npcDoctors == 0)
 									interruptionRequest(0);
 								else
 									interruptionRequest(1);
@@ -2571,21 +2500,21 @@ public class MainActivity extends Activity{
 						}
 					}else if (patientChoice == 1){
 						//Patient B
-						if(otherNumberOfSurgeons > 0 && otherNumberOfNurses > 0)
+						if(HospitalPeople.npcSurgeons > 0 && HospitalPeople.npcNurses > 0)
 						{
-							otherNumberOfPatientBs--;
-							otherNumberOfSurgeons--;
-							otherNumberOfNurses--;
+							HospitalPeople.npcPatientB--;
+							HospitalPeople.npcSurgeons--;
+							HospitalPeople.npcNurses--;
 							NHCollectPatient("B");
 						}else{
-							if(otherNumberOfDoctors > 0 && otherNumberOfNurses > 0 && otherNumberOfPatientAs > 0)
+							if(HospitalPeople.npcDoctors > 0 && HospitalPeople.npcNurses > 0 && HospitalPeople.npcPatientA > 0)
 							{
-								otherNumberOfPatientAs--;
-								otherNumberOfDoctors--;
-								otherNumberOfNurses--;
+								HospitalPeople.npcPatientA--;
+								HospitalPeople.npcDoctors--;
+								HospitalPeople.npcNurses--;
 								NHCollectPatient("A");
 							}else{
-								if(otherNumberOfSurgeons == 0)
+								if(HospitalPeople.npcSurgeons == 0)
 									interruptionRequest(2);
 								else
 									interruptionRequest(1);
@@ -2615,11 +2544,11 @@ public class MainActivity extends Activity{
 			public void onFinish() {
 				if(!mainTimeLeft.getText().toString().equals("00:00") && start){
 					if(patient.equals("A")){
-						otherNumberOfDoctors++;
+						HospitalPeople.npcDoctors++;
 					}else{
-						otherNumberOfSurgeons++;
+						HospitalPeople.npcSurgeons++;
 					}
-					otherNumberOfNurses++;
+					HospitalPeople.npcNurses++;
 
 					otherScore++;
 					flashScore(otherScoreTextView);
@@ -2635,25 +2564,25 @@ public class MainActivity extends Activity{
 	private void endGame(){
 		start = false;
 
-		numberOfPatientAs = Integer.parseInt(StartOptionsActivity.startAPatientET.getText().toString());
-		numberOfPatientBs = Integer.parseInt(StartOptionsActivity.startBPatientET.getText().toString());
-		numberOfDoctors = Integer.parseInt(StartOptionsActivity.startDoctorsET.getText().toString());
-		numberOfNurses = Integer.parseInt(StartOptionsActivity.startNursesET.getText().toString());
-		numberOfSurgeons = Integer.parseInt(StartOptionsActivity.startSurgeonsET.getText().toString());
-		otherNumberOfDoctors = Integer.parseInt(StartOptionsActivity.startOtherDoctorsET.getText().toString());
-		otherNumberOfNurses = Integer.parseInt(StartOptionsActivity.startOtherNursesET.getText().toString());
-		otherNumberOfSurgeons = Integer.parseInt(StartOptionsActivity.startOtherSurgeonsET.getText().toString());
-		otherNumberOfPatientAs = Integer.parseInt(StartOptionsActivity.NHStartAPatientET.getText().toString());
-		otherNumberOfPatientBs = Integer.parseInt(StartOptionsActivity.NHStartBPatientET.getText().toString());
+		HospitalPeople.patientA = Integer.parseInt(StartOptionsActivity.startAPatientET.getText().toString());
+		HospitalPeople.patientB = Integer.parseInt(StartOptionsActivity.startBPatientET.getText().toString());
+		HospitalPeople.doctors = Integer.parseInt(StartOptionsActivity.startDoctorsET.getText().toString());
+		HospitalPeople.nurses = Integer.parseInt(StartOptionsActivity.startNursesET.getText().toString());
+		HospitalPeople.surgeons = Integer.parseInt(StartOptionsActivity.startSurgeonsET.getText().toString());
+		HospitalPeople.npcDoctors = Integer.parseInt(StartOptionsActivity.startOtherDoctorsET.getText().toString());
+		HospitalPeople.npcNurses = Integer.parseInt(StartOptionsActivity.startOtherNursesET.getText().toString());
+		HospitalPeople.npcSurgeons = Integer.parseInt(StartOptionsActivity.startOtherSurgeonsET.getText().toString());
+		HospitalPeople.npcPatientA = Integer.parseInt(StartOptionsActivity.NHStartAPatientET.getText().toString());
+		HospitalPeople.npcPatientB = Integer.parseInt(StartOptionsActivity.NHStartBPatientET.getText().toString());
 		startTimeMilliseconds = Integer.parseInt(StartOptionsActivity.totalTimeET.getText().toString())*1000;
 		patientTimeLeftMilliseconds = Integer.parseInt(StartOptionsActivity.patientTimeET.getText().toString())*1000;
 		score = 0;
 		otherScore = 0;
 
 		if(StartOptionsActivity.cooperationSpinner.getSelectedItemPosition() == 0)
-			highCooperation = true;
+			CooperationLevel.highCooperation = true;
 		else
-			highCooperation = false;
+			CooperationLevel.highCooperation = false;
 
 		if(StartOptionsActivity.patientFlowPatternSpinner.getSelectedItemPosition() == 0)
 			earlySlowPattern = true;
